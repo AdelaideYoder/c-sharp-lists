@@ -1,26 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace tuples
+namespace dictionaries
 {
     class Program
     {
         static void Main(string[] args)
         {
-            List<(string product, double amount, int quantity)> transactions = new List<(string, double, int)>();
+            //n Main method, create a list of value tuples that will hold individual transactions for a hardware business. Each tuple will store the product, the total amount of the transaction, and the quantity of the product.
+            List<(string product, double amount, int quantity)> transactions = new List<(string, double, int)>(){
+            //Add 5, or more, transactions to the list.
+            ("Saw", 9.00, 10),
+            ("Hammer", 5.55, 25),
+            ("Nails", 2.00, 100),
+            ("Work Gloves", 4.24, 20),
+            ("Screw Driver", 3.00, 16)
+        };
 
-            (string product, double amount, int quantity) hammer = ("Hammer", 19.99, 25);
-            (string product, double amount, int quantity) nails = ("Nails", 7.99, 100);
-            (string product, double amount, int quantity) nailGun = ("Nail Gun", 189.99, 1);
-            (string product, double amount, int quantity) bandaids = ("Bandaids", 6.72, 250);
-            (string product, double amount, int quantity) staples = ("Staples", 3.98, 50);
-
+            int totalItemsSold = 0;
+            double netRevenue = 0;
+            //Iterate over the list of tuples and calculate how many total products you sold today, and what your total revenue was.
             foreach ((string product, double amount, int quantity) t in transactions)
             {
                 // Logic goes here to look up quantity and amount in each transaction
-                t.quantity
+                totalItemsSold += t.quantity;
+                netRevenue += t.quantity * t.amount;
             }
-
+            System.Console.WriteLine($"There were {totalItemsSold} products sold for a total profit of ${netRevenue}");
         }
     }
 }
